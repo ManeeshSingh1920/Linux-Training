@@ -1,0 +1,98 @@
+Install kernel Source and kernel header 
+    uname -r
+	sudo apt update
+    sudo apt install linux-source linux-headers-$(uname -r) // Install kernel source
+    cd /usr/src
+    sudo tar -xjf linux-source-*.tar.bz2  // Untar source files 
+    cd linux-source-*/
+
+
+
+Linux boot on X86 hardware
+
+	- Bios(static memory)
+		- CPU initialization and POST
+			- configure clocks
+			- cache initialization
+			
+			- POST
+			    - checks and confirms integrity of the critical 
+                  system devices
+				- Timer IC's
+    				- DMA controllers
+    				- Video ROM
+				- Serial/parallel ports
+				- Keyboard
+
+			- Memory Init
+				- intialization of memory controller
+			  	  (DRAM controller)
+				- verification & Caliberation of physical RAM 
+
+
+		- system Bus initalization(PCI)
+			- initialize pci host/bridge controller
+			- PCI probe
+
+		- initialize disk controllers
+			- sata
+			- usb
+			- IDE
+
+		- Loads Boot loader from MBR (configured boot device)
+			-Master boot Record first sector of boot disk
+				- O/S loader(first 446 bytes)
+				- partition table info(64 bytes)
+				- MBR signature/Magic no (2 bytes)
+
+
+		- Grub
+			- stage 1
+				- resides in MBR
+				- invokes stage 1.5
+
+			-stage 1.5
+				-  resides at MBR gap 0-63 sectors before start of 1st partition-(30kb)
+				-  intialize file system services
+				-  Lists valid boot Images 
+				-  invokes stage 2 
+
+			- stage 2
+				- Initialize stack and load Kernel Image 
+				- Invoke kernel boot-strap
+
+	- OS Kernel
+		- Boot-strap
+			- MMU init, setup page-tables 
+			- saves kernel args into kernel variables(DT address)
+			- invoke kernel's main routine (start_kernel)
+
+
+		- Protected-mode kernel
+			- Start_kernel
+				- starts kernel subsystem initialization
+				    - setup_arch()
+                                        - Enumerates physical memory info with memblock layer
+                                        - parse kernel boot parameters
+                                        - invokes target specific platform   
+                                          device enumeration routines
+                                        - set up memory zones info
+
+                                - High level MM
+                                - Driver stacks
+                                - Process Manager
+                                - File-systems
+                                - Rootfs Mount
+				- initializes kernel threads
+					- init
+					- kthreadd
+
+
+
+
+
+	- Application initialization
+		- user-space init subsystem
+			- init process (/sbin)
+			- intililize Deamons(startup services)
+			- User Interface initialization

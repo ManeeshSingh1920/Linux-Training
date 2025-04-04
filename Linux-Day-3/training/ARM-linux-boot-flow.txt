@@ -1,0 +1,75 @@
+Embedded Linux System-Boot
+==========================
+
+Hardware: System-On-Chip + Peripheral interfaces
+	  (SOC = CPU + MMU + memory controller + Interrupt Controller + DMA + 
+                 Bus controllers + Device Controllers)
+
+
+	-Boot-ROM
+		- resides at reset vector 
+		- Initializes following
+			- CPU clocks
+			- Cpu cache
+			- static memory
+			- Boot device controller
+				- Any or all of the following
+				  Nor flash, Nand flash, SD/MMC controller
+			- Dynamic memory initalization(DRAM controller)
+		- Load Bootloader(FSBL or SSBL) into pre-configured address space
+
+
+	-FSBL ( First stage Boot Loader)
+		 -Loaded into static RAM from storage
+                        - Initialize DRAM controller
+                        - Load SSBL into memory
+
+
+	-SSBL ( Secondary stage Boot Loader)
+		- resides at on-board storage
+		- Loaded into Dynamic memory by either FSBL or Boot-Rom
+		- intilializes following
+			- console
+			- storage device controllers
+				- USB
+				- SD/MMC
+			- network controllers 
+			- Allocate Address space for kernel
+		- Fetch & Load kernel, BSP(DT)Images from pre-configured 
+                  storage or network into memory
+		- setup kernel parameters
+       		- invokes kernel's boot-strap with board information
+
+
+
+	- kernel Boot
+        	-Boot strap
+                	- Initialize MMU
+                	- allocate page list
+                	- allocate page-frame tables
+			- setup TLB
+                	- setup caches
+                	- Relocate kernel Image
+                	- Invoke start function of kernel Proper
+
+        	-Vmlinux (kernel proper)
+                	- init Memory Manager
+                	- init console
+                	- set-up timer subsystem
+                	- init interrupt subsystem
+                	- init platform devices
+			- init service subsystems
+			- mount rootfs
+                	- start init thread
+
+		-init thread
+                	- intializes first user program
+
+
+       - user-space init Implementations and Frameworks
+                	- system V init
+                	- upstart init
+                	- Android init
+                	- systemd init
+                	- initng
+                	- openwrt init

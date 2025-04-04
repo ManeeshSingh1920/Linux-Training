@@ -1,0 +1,887 @@
+
+=============================================================
+  Day 1
+============================================================
+
+
+Linux File Operations and Commands (Expanded)
+
+show current directory 
+pwd 
+explain 
+
+=========================================
+1. List Files (ls)
+
+List files and directories:
+ls
+
+List files in long format:
+ls -l
+
+List all files, including hidden ones:
+ls -a
+discuss -> permission , user, group etc.... 
+
+List files in a specific directory:
+ls /path/to/directory
+
+ls -l
+ls -lh (human readable format)
+ls -lhS (sorting with size)
+
+=========================================
+2. Create a Directory (mkdir)
+
+Create a directory:
+mkdir new_directory
+
+Change to a directory:
+cd /path/to/directory
+
+Create multi directory:
+mkdir folder1 folder2 folder3
+
+Create nested directories:
+mkdir -p parent/child/grandchild
+
+=========================================
+3. Change Directory (cd)
+
+Change to a directory:
+cd /path/to/directory
+
+Go to the home directory:
+cd ~  (tild) tild always represent home dir
+
+cd /  ( / is a root of all the directory hierarcy..its not a home dir)
+
+Go up one directory level:
+cd ..
+cd ../../..  <== go to multi dir
+
+cd ../../  <= press tab keys twice and it will show content of ../../ dir... its like a ls cmd. 
+
+
+
+=========================================
+
+4. Remove a Directory (rmdir)
+
+Remove an empty directory:
+rmdir empty_directory
+
+Remove a directory and its contents:
+rm -r directory_with_contents
+
+=========================================
+
+5. Create a File (touch)
+   ==> when we create file with touch the size of file will be 0 byte
+
+Create an empty file:
+touch newfile.txt
+
+another way is => 
+> file  (By default whatever file we create it is txt file)
+
+Update the timestamp of an existing file:
+touch existingfile.txt
+
+=========================================
+
+6.  Files (cp)
+
+a file:
+cp file.txt /path/to/destination/
+
+a directory recursively:
+cp -r directory /path/to/destination/
+
+=========================================
+
+7. Move or Rename Files (mv)
+
+Move a file:
+mv file.txt /path/to/destination/
+
+Rename a file:
+mv oldname.txt newname.txt
+
+=========================================
+
+8. Remove Files (rm)
+
+Remove a file:
+rm file.txt
+
+Remove a directory and its contents:
+rm -r directory
+
+Force remove without prompting:
+rm -f file.txt
+
+=========================================
+
+9. View File Content (cat, less, more, head, tail)
+
+Display file content:
+cat file.txt
+
+cat > file.txt   /// this will allow us to type the content which will be saved in file...
+                  //cntrl + d will save
+
+echo hello
+
+echo > hello.txt 
+echo this is file created by echo > hello.txt // this will create file and add data into it..
+                                              // if file is already there it will overwrite
+echo this is append >> hello.txt // this will append...not overwrite	
+echo "this is append\nnew line" >> hello.txt										  
+
+View file content page by page:
+less file.txt
+
+View the first 10 lines:
+head file.txt
+head -n 6 file.txt
+
+View the last 10 lines:
+tail file.txt
+tail -n 8 file.txt
+
+Monitor a file in real-time:
+tail -f logfile.log
+
+=========================================
+
+10. Search Within Files (grep)
+
+Search for a pattern:
+grep "pattern" file.txt
+
+Search recursively:
+grep -r "pattern" /path/to/directory
+
+Case-insensitive search:
+grep -i "pattern" file.txt
+
+=========================================
+
+11. Find Files (find)
+
+Find files by name:
+find /path/to/directory -name "filename"
+
+Find files modified in the last 7 days:
+find /path/to/directory -mtime -7
+
+Find files larger than 100MB:
+find /path/to/directory -size +100M
+
+=========================================
+
+12. Change File Permissions (chmod)
+
+Give execute permission to the owner:
+chmod u+x file.txt
+
+Give read, write, and execute permissions to everyone:
+chmod 777 file.txt
+
+Remove write permission for group and others:
+chmod go-w file.txt
+
+=========================================
+
+13. Change File Ownership (chown)
+
+Change the owner of a file:
+chown newowner file.txt
+
+Change the owner and group of a file:
+chown newowner:newgroup file.txt
+
+=========================================
+
+14. Create Symbolic Links (ln)
+
+Create a symbolic link:
+ln -s /path/to/file link_name
+
+=========================================
+
+15. Compress and Decompress Files (tar, gzip, zip)
+
+Create a tar archive:
+tar -cvf archive.tar /path/to/directory
+
+Extract a tar archive:
+tar -xvf archive.tar
+
+Compress a file with gzip:
+gzip file.txt
+
+Decompress a gzip file:
+gunzip file.txt.gz
+
+Create a zip archive:
+zip archive.zip file1 file2
+
+Extract a zip archive:
+unzip archive.zip
+
+=========================================
+
+Additional Useful Commands
+
+1. Help and Manual Pages
+
+Display help for a command:
+command --help
+
+Open the manual page for a command:
+man command
+
+2. Network Configuration (ifconfig, ip)
+
+Display network interfaces:
+ifconfig
+
+Display IP addresses:
+ip addr show
+
+3. System Monitoring (top, htop, ntop)
+
+Display real-time system processes:
+top
+
+Interactive system monitor (install htop first):
+htop
+
+Network traffic monitoring (install ntop first):
+ntop
+
+4. Package Management (apt)
+
+Update package list:
+sudo apt update
+
+Upgrade installed packages:
+sudo apt upgrade
+
+Install a package:
+sudo apt install package_name
+
+Remove a package:
+sudo apt remove package_name
+
+
+
+
+===========================================
+
+uname -a 
+whereis pwd 
+whereis echo 
+whoam i 
+
+===========================================
+
+sudo apt install vim 
+vim new-file  // create new file 
+              // vim has 2 mode => insert mode means u can type esc+i
+			  // command mode means u can give vim editor commands by default its command mode
+			  //  fress esc to again go back from insert mode to command mode 
+:wq // write or say save and quit the file 								   
+:q  // dont save chnages and quit 
+:set nu // show line number 
+:set nonu // this is will hide line number 
+esc+yy // this command copy the line in which cursor is there 
+esc+p //go to line where u uwant to copy and past the copy 
+esc+<number>yy // copy number of line 
+for e.x => esc+4yy
+esc+dd // delete a line 
+esc+u // undo the operation
+
+Now show Visual code editor... 
+
+
+
+
+
+
+==============================================
+su root /// su user password does not exist erro comes then try below 
+sudo passwd root  // this will allow u to set new password... 
+su root // this will allow to login 
+exit // to exit from sudo 
+
+
+
+
+ps -A 
+ps -Af | head 
+ps -Af | tail 
+pstree // this will show process in tree format 
+
+===================================================
+
+show simple shell script
+
+chmod +x linux_operations.sh
+
+sudo apt install dos2unix  # For Debian/Ubuntu
+dos2unix linux_operations.sh
+
+
+
+====================================================
+show systemcall 
+
+strace ./systemcall
+
+
+
+====================================================
+
+Linux Directory 
+
+Directory	Purpose
+/cdrom	Mount point for CD-ROMs (less common in modern systems).
+/lib32	32-bit libraries (on 64-bit systems).
+/lib64	64-bit libraries (on 64-bit systems).
+/libx32	x32 ABI libraries (for 64-bit systems using 32-bit pointers).
+/run	Runtime data for processes and services.
+/snap	Snap package manager storage for Snap applications.
+/srv	Data for services (e.g., web, FTP).
+/opt	Optional or third-party software.
+
+
+
+
+====================================================
+show initramfs file system -
+
+lsinitramfs /boot/initrd.img-$(uname -r)
+
+
+show proc file system 
+cat /proc/cpuinfo
+cat /proc/meminfo
+
+show sys file system 
+ls /sys/block
+
+Sudo df –T 
+
+# Step 1: Create the mount point directory
+sudo mkdir -p /mnt/tmpfs
+
+# Step 2: Mount the tmpfs file system
+sudo mount -t tmpfs -o size=100M tmpfs /mnt/tmpfs
+
+# Step 3: Verify the mount
+df -h /mnt/tmpfs
+
+# Step 4: Create a test file
+echo "This is a tmpfs file" > /mnt/tmpfs/testfile.txt
+
+# Step 5: View the file
+cat /mnt/tmpfs/testfile.txt
+
+# Step 6: Unmount the tmpfs file system
+sudo umount /mnt/tmpfs
+
+# Step 7: Verify the file is gone (tmpfs is volatile)
+ls /mnt/tmpfs
+
+=====================================================================
+
+Symlink 
+
+echo "Hello, World!" > myfile.txt  // create file
+ln -s myfile.txt mylink  //create symlink
+ls -l mylink   // verify link
+cat mylink  // access file 
+
+hard link 
+echo "Hello, World!" > myfile.txt  // create file
+ln myfile.txt myhardlink  //create symlink
+ls -l myhardlink   // verify link
+cat myhardlink  // access file 
+
+
+
+=====================================================================
+
+Linux version
+
+Uname –r
+Cat /proc/version 
+
+
+Process -> 
+run the process experiment and check ps aux 
+
+
+
+========================================================================================
+
+Kernel Process vs. User Processes
+
+printf(...) → Executes in user space 
+getpid() → Makes a system call to the kernel, which knows the PID
+
+gcc -o kernel-user-space kernel-user-space.c
+strace ./kernel-user-space
+
+printf() User Space
+getpid() Enters Kernel Space via syscall
+
+
+
+
+
+
+
+
+=================================================================================
+Process vs Thread 
+
+gcc -o process process.c  
+./process   // Both the process have different PID
+
+gcc -o thread thread.c -lpthread  // wihtout lpthread it will give error
+./thread // Both the thread have same PID 
+
+Process via fork 
+Each fork() creates a new process with its own memory space.
+
+Thread via thread create
+Both threads share the same PID, but have different thread IDs (TID).
+
+ Process (fork)
+          ┌────────────┐
+          │ Main       │
+          │ Memory A   │
+          └────────────┘
+               |
+             fork()
+               |
+          ┌────────────┐
+          │ Child Proc │
+          │ Memory B   │  ← Own address space
+          └────────────┘
+
+
+         Thread (pthread)
+          ┌──────────────────────┐
+          │ Process (PID 1000)   │
+          │ ┌────┐  ┌────┐       │
+          │ │ T1 │  │ T2 │       │  ← Share memory space
+          │ └────┘  └────┘       │
+          └──────────────────────┘
+
+
+========================================================================
+
+kernel Thread 
+
+make clean
+make
+sudo insmod kernel-thread.ko 
+dmesg -w
+sudo rmmod kernel-thread
+dmesg | tail
+
+=============================================================================
+
+
+=============================================================
+  Day 2
+============================================================
+
+Forvia Linux Training - Day 2
+
+Exp 1 => Kernel Module
+Module loading with insmod
+Module listing with lsmod
+Module information with modinfo hello.ko
+Module removal with rmmod
+Kernel messages with dmesg
+
+make
+sudo insmod hello.ko
+dmesg | tail
+# or
+lsmod | grep hello
+sudo rmmod hello
+dmesg | tail
+
+-----------------------------------------------------------
+Exp 2 => Exported Symbol 
+make
+sudo insmod module_a.ko
+sudo insmod module_b.ko
+dmesg | tail -n 10  # Check kernel log
+
+Expected Output -> 
+Module A loaded
+exported_function called with 10
+Module B: exported_function returned 20
+
+View kernel symbol table
+sudo cat /proc/kallsyms | grep exported_function
+
+modinfo module_a.ko => show module info
+
+-----------------------------------------------------------
+Exp 3 => passing parameter to module 
+For Integer -> 
+make
+sudo insmod int_param.ko my_int=42
+dmesg | tail -n 1  # Output: "Integer Module loaded! my_int = 42"
+sudo rmmod int_param
+
+For String -> 
+make
+sudo insmod string_param.ko my_string="hello_forvia"
+dmesg | tail -n 1  # Output: "string Module loaded! my_string = hello_kernel"
+sudo rmmod string_param
+
+make
+sudo insmod arr_param.ko my_array=10,20,30
+dmesg | tail -n 4  # Output:
+                   # Array Module loaded!
+                   # my_array[0] = 10
+                   # my_array[1] = 20
+                   # my_array[2] = 30
+sudo rmmod arr_param
+
+
+Key Points:
+module_param() declares a single parameter.
+module_param_array() declares an array parameter.
+Permissions (0644) allow root to modify values via /sys.
+MODULE_PARM_DESC() provides a description visible in modinfo.
+
+Permissions:
+
+0644 allows root to modify parameters via /sys/module/<module>/parameters/.
+
+Array handling:
+
+arr_argc automatically tracks the number of elements passed.
+
+
+ Check /sys/module/<module name >/parameters/ for runtime changes:
+ ls /sys/module/int_param/parameters/my_int
+ cat /sys/module/int_param/parameters/my_int
+ echo 99 | sudo tee /sys/module/int_param/parameters/my_int
+
+You can modify parameters at runtime (if permissions allow):
+echo 99 | sudo tee /sys/module/<module name>/parameters/my_int
+
+-----------------------------------------------------------
+Exp 4 => module dependancy 
+make
+sudo insmod module_a.ko
+sudo insmod module_b.ko
+dmesg | tail -n 10  # Check kernel log
+
+Expected Output -> 
+Module A loaded
+exported_function called with 10
+Module B: exported_function returned 20
+
+View kernel symbol table
+sudo cat /proc/kallsyms | grep exported_function
+
+modinfo module_a.ko => show module info
+
+Now remove both the module and now try to load module b without loading module access
+we should get error that -> unkown symble in module.  becoz its deoend on experted symbole of module a 
+NOTE - MODULE_SOFTDEP -> this fline in module b ensure that module a should load module a first... 
+
+-----------------------------------------------------------
+
+Exp 5 =>
+
+uboot demo =>
+git clone https://source.denx.de/u-boot/u-boot.git
+ls
+cd u-boot/
+git checkout v2023.10 -b u-boot-demo
+sudo apt install gcc-arm-linux-gnueabi -y
+arm-linux-gnueabi-gcc --version
+make ARCH=arm CROSS_COMPILE=arm-linux-gnueabi- qemu_arm_defconfig
+make ARCH=arm CROSS_COMPILE=arm-linux-gnueabi- -j$(nproc)
+sudo apt install qemu-system-arm
+
+qemu-system-arm -M virt -nographic -bios u-boot.bin
+
+ctrl + A then X will close the qemu uboot prompt
+
+Show uboot demo
+Bootdelay =>
+printenv bootdelay  // show bootdelay
+setenv bootdelay 15 // set bootdelay to 15
+saveenv
+reset
+setenv bootdelay -1 // to disable autoboot
+saveenv
+reset
+
+Add your own custom cmd
+setenv mycmd 'echo "Hello Students!"; echo "Welcome to U-Boot Training"'
+saveenv
+run mycmd
+
+change promt name ->
+vim include/configs/qemu-arm.h
+#define CONFIG_SYS_PROMPT "Maneesh> "  // Add this line
+make ARCH=arm CROSS_COMPILE=arm-linux-gnueabi- -j$(nproc) // recompile uboot
+qemu-system-arm -M virt -nographic -bios u-boot.bin  // rerun u boot
+
+
+uboot menucnfig ->
+make ARCH=arm CROSS_COMPILE=arm-linux-gnueabi- menuconfig
+
+U boot build process flow
+1. Config (.config) 
+   ↓ 2. Platform Code (arch/arm/cpu/armv7/start.S) 
+     ↓ 3. Board Init (board/versatile/versatilepb.c) 
+	   ↓ 4. Common Code (common/board_f.c) 
+	      ↓ 5. Final Image (u-boot.bin) explain this
+		  
+----------------------------------------------------------------------------
+Exp 6 =>
+
+After installing gcc-arm-linux-gnueabi, all components are stored in:
+
+/usr/bin/arm-linux-gnueabi-*       # Binaries
+/usr/arm-linux-gnueabi/           # Libraries and headers
+
+
+Component	   Verification Command	                              Expected Output Contains
+Compiler	arm-linux-gnueabi-gcc --version	                      Target: arm-linux-gnueabi
+Binutils	arm-linux-gnueabi-ld --version	                      GNU ld (GNU Binutils)
+C Library	ls /usr/arm-linux-gnueabi/lib/libc.so*	              libc.so.6
+Headers	    find /usr/arm-linux-gnueabi/include -name "stdio.h"	  stdio.h path
+
+
+
+Data Flow
+
+[Source Files (.c)] 
+  ↓ (arm-gcc)
+[Assembly (.s)] 
+  ↓ (arm-as)
+[Object Files (.o)] 
+  ↓ (arm-ld + linker script)
+[Executable (u-boot.elf)] 
+  ↓ (arm-objcopy)
+[Raw Binary (u-boot.bin)]		  
+
+
+crete a simple C file and try this -> 
+arm-linux-gnueabi-size newtest.elf commmand
+
+
+
+
+
+
+
+=============================================================
+  Day 3
+============================================================
+
+Day 3
+-----------------------------------------------------------
+
+Exp 1 => x86 boot flow... 
+1. BIOS not accessible from Linux so cant show its code. 
+2. Show MBR 
+   lsblk  -> check all the available storage 
+   FOR HDD -> use /dev/sda 
+   FOR SSD -> use /dev/nvme0n1 
+   sudo dd if=/dev/nvme0n1 bs=512 count=1 | hexdump -C | less
+   This command will copy 1 block (512 bytes) from /dev/nvme0n1 and show the output in hextdump format. 
+	- Bytes 0–445: Bootloader code (-> 446 bytes (GRUB Stage 1)
+	- Bytes 446–509: Partition table -> 64 bytes (4 entries × 16 bytes)
+	- Bytes 510–511: Magic number -> 2 bytes (should be 0x55AA)
+	  If this is 55AA, it confirms it's a valid MBR.
+	  
+3. Show kernel image 
+   ls -l /boot/vmlinuz-*
+   
+4. Show Initrd file(Initial RAM disk fiel)
+   ls -l /boot/initrd.img-*
+   
+5. Show kernel Boot Parameters 
+   cat /proc/cmdline
+   
+6. Show GRUB Config
+   cat /boot/grub/grub.cfg | less
+   NOTE -> Explain this function => 
+   menuentry 'Ubuntu' --class ubuntu --class gnu-linux --class gnu --class os $menuentry_id_option 'gnulinux-simple-e96ca0d1-9f47-40fc-becf-e07f39b2e6cb
+   in this function -> 
+   this is the kernel boot parameter -> linux /boot/vmlinuz-5.15.0-136-generic root=UUID=e96ca0d1-9f47-40fc-becf-e07f39b2e6cb ro quiet splash $vt_handoff
+   this is initramfs -> initrd /boot/initrd.img-5.15.0-136-generic
+   
+7. Early Boot logs 
+   dmesg | less
+   
+8. Check which init system is used(systemd -> for x86 or init for arm)
+   ps -p 1 -o comm=
+   
+9.  check systmed boot chart 
+    systemd-analyze
+    systemd-analyze blame
+
+Now to show kernel booting do these steps ->
+10. Install kernel header 
+    uname -r
+	sudo apt update
+    sudo apt install linux-source linux-headers-$(uname -r) // Install kernel source
+    cd /usr/src
+    sudo tar -xjf linux-source-*.tar.bz2  // Untar source files 
+    cd linux-source-*/
+	less init/main.c  -> start_kernel() // this is the kernel start point  
+    less arch/x86/kernel/setup.c  // these two files are for architecture specific setup 
+    less arch/x86/kernel/head_64.S  // these two files are for architecture specific setup 
+
+
+
+
+
+------------------------------------------------------------------------------------------------------   
+Exp 2 -> 
+
+ARM booting demo using Qemu
+
+uboot demo =>
+
+git clone https://source.denx.de/u-boot/u-boot.git
+ls
+cd u-boot/
+git checkout v2023.10 -b u-boot-demo
+sudo apt install gcc-arm-linux-gnueabi -y
+arm-linux-gnueabi-gcc --version
+make ARCH=arm CROSS_COMPILE=arm-linux-gnueabi- qemu_arm_defconfig
+make ARCH=arm CROSS_COMPILE=arm-linux-gnueabi- -j$(nproc)
+sudo apt install qemu-system-arm
+
+qemu-system-arm -M virt -nographic -bios u-boot.bin
+
+ctrl + A then X will close the qemu uboot prompt
+
+Show uboot demo
+Bootdelay =>
+printenv bootdelay  // show bootdelay
+setenv bootdelay 15 // set bootdelay to 15
+saveenv
+reset
+setenv bootdelay -1 // to disable autoboot
+saveenv
+reset
+
+Add your own custom cmd
+setenv mycmd 'echo "Hello Students!"; echo "Welcome to U-Boot Training"'
+saveenv
+run mycmd
+
+change promt name ->
+vim include/configs/qemu-arm.h
+#define CONFIG_SYS_PROMPT "Maneesh> "  // Add this line
+make ARCH=arm CROSS_COMPILE=arm-linux-gnueabi- -j$(nproc) // recompile uboot
+qemu-system-arm -M virt -nographic -bios u-boot.bin  // rerun u boot
+
+
+uboot menucnfig ->
+make ARCH=arm CROSS_COMPILE=arm-linux-gnueabi- menuconfig
+
+U boot build process flow
+1. Config (.config) 
+   ↓ 2. Platform Code (arch/arm/cpu/armv7/start.S) 
+     ↓ 3. Board Init (board/versatile/versatilepb.c) 
+	   ↓ 4. Common Code (common/board_f.c) 
+	      ↓ 5. Final Image (u-boot.bin) explain this
+
+
+---------------------------------------------------------
+Kernel Demo -> 
+
+git clone https://github.com/torvalds/linux.git
+cd linux
+make ARCH=arm CROSS_COMPILE=arm-linux-gnueabi- versatile_defconfig
+make ARCH=arm CROSS_COMPILE=arm-linux-gnueabi- zImage -j$(nproc)
+make ARCH=arm CROSS_COMPILE=arm-linux-gnueabi- dtbs
+
+kernel output file	Location
+zImage	-> arch/arm/boot/zImage
+DTB	    -> arch/arm/boot/dts/arm/versatile-pb.dtb   
+
+----------------------------------------------------------
+Busy-Box Demo - 
+
+git clone https://git.busybox.net/busybox
+cd busybox
+make ARCH=arm CROSS_COMPILE=arm-linux-gnueabi- defconfig
+make ARCH=arm CROSS_COMPILE=arm-linux-gnueabi- menuconfig
+Go to Settings → Enable:
+		[ * ] Build static binary (no shared libs)
+
+Then: -> 
+make ARCH=arm CROSS_COMPILE=arm-linux-gnueabi- -j$(nproc)
+
+
+---------------------------------------------------------
+Rootfs Demo 
+
+./rootfs-script.sh file 
+
+
+----------------------------------------------------------
+Create Initramfs ->
+
+cd rootfs
+find . -print0 | cpio --null -ov --format=newc | gzip -9 > ../initramfs.cpio.gz
+cd ..
+
+----------------------------------------------------------
+
+Boot Qemu -> 
+qemu-system-arm -M versatilepb -m 128M \
+  -kernel linux/arch/arm/boot/zImage \
+  -dtb linux/arch/arm/boot/dts/arm/versatile-pb.dtb \
+  -initrd initramfs.cpio.gz \
+  -append "console=ttyAMA0" \
+  -nographic
+
+
+-------------------------------------------------------------------------------------------
+
+Exp 3 -> 
+
+# Compile driver
+make
+
+# Load module
+sudo insmod hello_chrdev.ko
+
+dmesg | tail 
+
+# Create device node
+dmesg | grep hello_chr  # get major number
+sudo mknod /dev/hello_chr c <major> 0
+sudo chmod 666 /dev/hello_chr
+
+# Compile and run user app
+gcc test_app.c -o test_app
+./test_app
+
+
+	
