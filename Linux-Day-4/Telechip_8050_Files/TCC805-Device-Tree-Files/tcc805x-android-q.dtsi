@@ -1,0 +1,12 @@
+// SPDX-License-Identifier: (GPL-2.0-or-later OR MIT)
+/*
+ * Copyright (C) Telechips Inc.
+ */
+
+&firmware_android {
+	compatible = "android,firmware";
+	vbmeta {
+		compatible = "android,vbmeta";
+		parts = "vbmeta,boot,system,vendor";
+	};
+};
