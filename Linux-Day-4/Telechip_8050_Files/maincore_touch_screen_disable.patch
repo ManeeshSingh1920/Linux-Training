@@ -1,0 +1,14 @@
+diff --git a/arch/arm/boot/dts/tcc/tcc8050-android-lpd4x322_sv1.0.dts b/arch/arm/boot/dts/tcc/tcc8050-android-lpd4x322_sv1.0.dts
+index 534957334768..6d45097b7dd0 100644
+--- a/arch/arm/boot/dts/tcc/tcc8050-android-lpd4x322_sv1.0.dts
++++ b/arch/arm/boot/dts/tcc/tcc8050-android-lpd4x322_sv1.0.dts
+@@ -450,7 +450,8 @@
+ 
+ 	mxt_touch@4b {
+ 		compatible = "atmel,maxtouch";
+-		status = "okay";
++		/*status = "okay";*/
++		status = "disabled";
+ 		reg = <0x4b>;
+ 		pinctrl-names = "default";
+ 		pinctrl-0 = <&tsc0_default>;
