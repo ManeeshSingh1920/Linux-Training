@@ -1,0 +1,10 @@
+tcc8050-android-lpd4x322_sv1.0.dts
+├── tcc8050-android-ivi.dtsi
+│   ├── tcc-pmap-805x-android-customized.dtsi
+│   ├── tcc8050.dtsi
+│   │   ├── tcc805x.dtsi
+│   │   └── tcc8050_53-pinctrl.dtsi
+│   ├── tcc805x-android.dtsi
+│   └── tcc-pmap-common.dtsi
+└── tcc8050-android-ivi-display.dtsi
+    └── tcc805x-display.dtsi

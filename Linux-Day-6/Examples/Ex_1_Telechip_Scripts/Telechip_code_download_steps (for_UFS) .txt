@@ -1,0 +1,388 @@
+STEPS FOR TELECHIP CODE DOWNLOAD AND BUILD
+
+***********************************************************************************************
+*Install Package for a new laptop
+    1.install linux - ubuntu-20.04.6
+
+    2.sudo apt update
+
+    3.sudo apt install git
+
+    4.sudo apt install git-repo
+
+    5.sudo apt install tar
+
+    6.sudo apt install tree
+
+    7.sudo apt install gcc
+
+    8.sudo apt install GParted
+
+    9.sudo apt install tilix
+
+    10.sudo apt install putty
+*********************************************************************************************
+*********************************************************************************************
+*Package Requirements -
+
+   1. sudo apt install -y net-tools make build-essential cmake gcc g++ perl openjdk-11-jdk ncftp chrony diffstat ctags
+
+  
+   2.sudo apt install -y git gnupg flex bison zip curl zlib1g-dev gcc-multilib g++-multilib libc6-dev libc6-dev-i386 lib32ncurses-dev x11proto-core-dev
+
+    
+   3.sudo apt install -y libx11-dev lib32z1-dev libgl1-mesa-dev libxml2-utils xsltproc unzip fontconfig sqlite libffi-dev libbz2-dev libreadline-dev libsqlite3-dev libssl-dev lzop dos2unix
+
+   
+   4.sudo apt install -y python2 python-dev python3-dev libncurses5 xz-utils tk-dev manpages-dev bzip2 device-tree-compiler libspiro-dev p7zip
+
+   
+   5.sudo apt install -y gawk wget texinfo chrpath socat cpio python3 python3-pip python3-pexpect debianutils iputils-ping python3-git python3-jinja2
+
+    
+   6.sudo apt install -y libegl1-mesa libsdl1.2-dev pylint3 xterm python3-subunit mesa-common-dev
+
+    
+   7.sudo apt install -y libncurses* subversion automake
+
+    
+   8.sudo apt install -y zstd
+
+   
+   9. sudo apt install -y git
+*********************************************************************************************
+*********************************************************************************************
+
+*Download - TCC805x EVB (64-bit SDK)
+
+   1.  mkdir mydroid
+
+   2.  cd mydroid
+
+   3.  repo init -u ssh://android.telechips.com/android_avn/android/platform/manifest.git -b TCC805x_Android10_IVI_3.0.0
+   
+   4.  repo sync
+*********************************************************************************************
+*********************************************************************************************
+
+*Compile and Build Android Framework
+    Set Up Compiling Environment    
+
+     $ cd ~/mydroid/maincore
+     $ source build/envsetup.sh
+     $ lunch
+     You're building on Linux
+
+   Lunch menu... pick a combo:
+     1. aosp_arm-eng
+     2. aosp_arm64-eng
+     3. aosp_barbet-userdebugcd 
+     4. aosp_blueline-userdebug
+     5. aosp_blueline_car-userdebug
+     6. aosp_bonito-userdebug
+     7. aosp_bonito_car-userdebug
+     8. aosp_bramble-userdebug
+     9. aosp_bramble_car-userdebug
+     10. aosp_car_arm-userdebug
+     11. aosp_car_arm64-userdebug
+     12. aosp_car_x86-userdebug
+     13. aosp_car_x86_64-userdebug
+     14. aosp_cf_arm64_auto-userdebug
+     15. aosp_cf_arm64_phone-userdebug
+     16. aosp_cf_x86_64_foldable-userdebug
+     17. aosp_cf_x86_64_pc-userdebug
+     18. aosp_cf_x86_64_phone-userdebug
+     19. aosp_cf_x86_64_tv-userdebug
+     20. aosp_cf_x86_auto-userdebug
+     21. aosp_cf_x86_phone-userdebug
+     22. aosp_cf_x86_tv-userdebug
+     23. aosp_coral-userdebug
+     24. aosp_coral_car-userdebug
+     25. aosp_crosshatch-userdebug
+     26. aosp_crosshatch_car-userdebug
+     27. aosp_crosshatch_vf-userdebug
+     28. aosp_flame-userdebug
+     29. aosp_flame_car-userdebug
+     30. aosp_redfin-userdebug
+     31. aosp_redfin_car-userdebug
+     32. aosp_redfin_vf-userdebug
+     33. aosp_sargo-userdebug
+     34. aosp_sargo_car-userdebug
+     35. aosp_sunfish-userdebug
+     36. aosp_sunfish_car-userdebug
+     37. aosp_trout_arm64-userdebug
+     38. aosp_trout_x86-userdebug
+     39. aosp_x86-eng
+     40. aosp_x86_64-eng
+     41. arm_krait-eng
+     42. arm_v7_v8-eng
+     43. armv8-eng
+     44. armv8_cortex_a55-eng
+     45. armv8_kryo385-eng
+     46. beagle_x15-userdebug
+     47. beagle_x15_auto-userdebug
+     48. car_tcc803xp_arm64-eng
+     49. car_tcc8050_arm64-eng
+     50. car_tcc8059_arm64-eng
+     51. car_x86_64-userdebug
+     52. db845c-userdebug
+     53. fuchsia_arm64-eng
+     54. fuchsia_x86_64-eng
+     55. gsi_car_arm64-userdebug
+     56. gsi_car_x86_64-userdebug
+     57. hikey-userdebug
+     58. hikey64_only-userdebug
+     59. hikey960-userdebug
+     60. hikey960_tv-userdebug
+     61. hikey_tv-userdebug
+     62. pixel3_mainline-userdebug
+     63. poplar-eng
+     64. poplar-user
+     65. poplar-userdebug
+     66. qemu_trusty_arm64-userdebug
+     67. sdk_car_arm-userdebug
+     68. sdk_car_arm64-userdebug
+     69. sdk_car_x86-userdebug
+     70. sdk_car_x86_64-userdebug
+     71. silvermont-eng
+     72. uml-userdebug
+     73. yukawa-userdebug
+     74. yukawa_sei510-userdebug
+
+     Which would you like? [aosp_arm-eng] 49 (car_tcc8050_arm64-eng)
+     device/telechips/car_tcc8050_arm64/device.mk:740: warning: BOARD_PLAT_PRIVATE_SEPOLICY_DIR has been deprecated.Use            SYSTEM_EXT_PRIVATE_SEPOLICY_DIRS instead.
+============================================
+PLATFORM_VERSION_CODENAME=REL
+PLATFORM_VERSION=12
+TARGET_PRODUCT=car_tcc8050_arm64
+TARGET_BUILD_VARIANT=eng
+TARGET_BUILD_TYPE=release
+TARGET_ARCH=arm64
+TARGET_ARCH_VARIANT=armv8-a
+TARGET_CPU_VARIANT=cortex-a72
+TARGET_2ND_ARCH=arm
+TARGET_2ND_ARCH_VARIANT=armv8-a
+TARGET_2ND_CPU_VARIANT=cortex-a53
+HOST_ARCH=x86_64
+HOST_2ND_ARCH=x86
+HOST_OS=linux
+HOST_OS_EXTRA=Linux-5.15.0-73-generic-x86_64-Ubuntu-20.04.6-LTS
+HOST_CROSS_OS=windows
+HOST_CROSS_ARCH=x86
+HOST_CROSS_2ND_ARCH=x86_64
+HOST_BUILD_TYPE=release
+BUILD_ID=RT12.230114.001.A1
+OUT_DIR=out
+
+********************************************************************************************
+********************************************************************************************
+*Choose variant
+   1 . $ choosevariant
+   
+        1. user
+        
+        2. userdebug
+        
+        3. eng
+        
+        select   2-userdebug
+*********************************************************************************************
+*********************************************************************************************        
+*Set Configuration of Toolchain for U-Boot
+
+   @Before building a bootloader, you should download toolchain from the following website.
+
+ 
+
+
+    https://developer.arm.com/tools-and-software/open-source-software/developer-tools/gnu-toolchain/gnu-a/downloads/  9-2-2019-12
+
+ 
+
+    Download
+    1. gcc-arm-9.2-2019.12-x86_64-aarch64-none-linux-gnu.tar.xz 
+
+    2. gcc-arm-9.2-2019.12-x86_64-arm-none-linux-gnueabihf.tar.xz.
+
+ 
+
+    after download tar file extract at home
+   
+    for Terminal -
+    Step-1
+    $ cd ~
+   
+    Step-2
+    $ cd gcc-arm-9.2-2019.12-x86_64-aarch64-none-linux-gnu/bin/
+
+    Step3
+    $ echo $PATH
+
+    Step-4
+    $ export PATH=$PWD:$PATH
+
+    Step-5
+    $ cd ../..
+
+    Step-6
+    $cd gcc-arm-9.2-2019.12-x86_64-arm-none-linux-gnueabihf/bin/
+
+    Step-7
+    $ echo $PATH
+  
+    Step-8
+    $ export PATH=$PWD:$PATH
+
+ *******************************************************************************************
+
+    Check the path of both file
+
+ 
+    $ cd bootable/bootloader/u-boot
+    $ source scripts/envsetup.sh
+   [1] Telechips Android Platform
+   [2] Telechips Android Platform (64bit)
+   [3] Telechips Linux Platform
+   [4] Telechips Linux Platform (64bit)
+   Select platform (default 4): 2
+   [1] TCC805x
+   [2] TCC803x
+   Select SoC family (default 1): 1
+   [1] TCC8050 EVB 1.0
+   [2] TCC8053 EVB 1.0
+   [3] TCC8050 EVB 0.1
+   [4] TCC8053 EVB 0.1
+   [5] TCC8059 EVB 0.1
+   Select board (default 1): 1
+   [1] Maincore
+   [2] Subcore
+   Select core (default 1): 1
+   U-Boot Environment Setup Complete
+
+    ARCH=arm64
+
+    CROSS_COMPILE=aarch64-none-linux-gnu-
+
+    DEVICE_TREE=tcc8050-evb_sv1.0
+
+*********************************************************************************************
+*********************************************************************************************
+
+
+*Build U-Boot and Make Rom-file
+
+  1.make tcc805x_android_10_ufs_defconfig
+  
+  2.make -j8
+
+
+*********************************************************************************************
+*********************************************************************************************
+*Kernel Configuration
+
+
+  1.$ cd ~/mydroid/maincore/kernel
+ 
+  2.$ unset ARCH
+  
+  3.$ unset CROSS_COMPILE
+
+  4.$ make ARCH=arm64 tcc805x_android_10_ivi_ufs_defconfig
+  
+**************************************************************************************************  
+  
+  to set GPU Virtualization
+  
+  1. $ make ARCH=arm64 menuconfig
+                    Device Drivers -
+                      -> Graphics support
+                          <*> PowerVR GPU
+                           [*]  PowerVR Virtualisation
+
+*********************************************************************************************
+*********************************************************************************************
+
+*Compile Kernel
+
+  $ make ARCH=arm64 CLANG_TRIPLE=aarch64-linux-gnu- CROSS_COMPILE=aarch64-linux-androidkernel- CC=../prebuilts/clang/host/linux-x86/clang-r353983c/bin/clang -j8
+
+*********************************************************************************************
+*********************************************************************************************
+*Compile Framework
+  
+  1.$ cd ~/mydroid/maincore
+
+  2.$  make -j8
+
+*********************************************************************************************
+*********************************************************************************************
+*  Sub core Build
+ 
+  1.  $ cd ~/mydroid/subcore
+ 
+  2.  ./autolinux -c configure
+ 
+  3.  ./autolinux -c build
+  
+ 
+ *****************************************************************************************
+ *****************************************************************************************
+* Use mktcimg
+ 
+ 
+ 1.  $ cd ~/mydroid/subcore/build/tcc8050-sub/tmp/deploy/images/tcc8050-sub
+ 
+ 2.  $ cp ca53_bl3.rom ../../../../../../../maincore/bootable/bootloader/u-boot
+ 
+ 3.  $ cp tc-boot-tcc8050-sub.img ../../../../../../../maincore/out/target/product/car_tcc8050_arm64
+
+ 4.  $ cp telechips-subcore-image-tcc8050-sub.ext4 ../../../../../../../maincore/out/target/product/car_tcc8050_arm64
+ 
+ 5.  $ cp tcc8050-linux-subcore_sv1.0-tcc8050-sub.dtb ../../../../../../../maincore/out/target/product/car_tcc8050_arm64
+ 
+ 
+ *****************************************************************************************
+ *****************************************************************************************
+ *Mktcimg
+ 
+   1.  cd ~/mydroid/maincore/bootable/bootloader/u-boot/boot-firmware/tools/mktcimg
+   
+   2.  ./mktcimg --parttype gpt --storage_size 31998345216 --fplist gpt_partition_for_arm64_ab_dp.list --outfile SD_Data.fai --area_name "SD Data" --gptfile SD_Data.gpt --sector_size 4096
+   
+******************************************************************************************
+******************************************************************************************
+*Make SNOR ROM Image
+
+
+  1.  cd ~/mydroid/maincore/bootable/bootloader/u-boot/boot-firmware/tools/tcc805x_snor_mkimage/
+
+  2.  ./tcc805x-snor-mkimage -i tcc8050.cs.cfg -o ../../tcc805x_snor.cs.rom
+  
+*******************************************************************************************
+*******************************************************************************************
+*Firmware Download Sequence (path is depend on location)
+  
+  1. cd ~~/mydroid/maincore/vendor/telechips/tools/FWDN/out
+  
+  
+  2. sudo ./fwdn --fwdn /media/xrda3/41ce7d1f-dd35-40b3-8b17-4c2093204e89/samsan/mydroid/maincore/bootable/bootloader/u-boot/boot-firmware/tcc805x_fwdn.cs.json
+
+  3. sudo ./fwdn --low-format --storage ufs
+
+  4. sudo ./fwdn --low-format --storage snor
+
+  5. sudo ./fwdn -w /media/xrda3/41ce7d1f-dd35-40b3-8b17-4c2093204e89/samsan/mydroid/maincore/bootable/bootloader/u-boot/boot-firmware/tcc805x_ufs_boot.json
+
+  6. sudo ./fwdn -w /media/xrda3/41ce7d1f-dd35-40b3-8b17-4c2093204e89/samsan/mydroid/maincore/bootable/bootloader/u-boot/boot-firmware/tools/mktcimg/SD_Data.fai --storage ufs --area user --sector-size 4096
+
+  7. sudo ./fwdn --write /media/xrda3/41ce7d1f-dd35-40b3-8b17-4c2093204e89/samsan/mydroid/maincore/bootable/bootloader/u-boot/boot-firmware/tcc805x_snor.cs.rom --area die1 --storage snor
+  
+  
+**************************************************************************************
+*************************************************************************************  
+ 
+  
+  
+  
+  
+  
